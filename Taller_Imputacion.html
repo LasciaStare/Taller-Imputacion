@@ -457,20 +457,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Pruebas estadísticas</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;missingno&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="exploracion-inicial-de-las-variables">
@@ -1197,7 +1183,12 @@ dtype: int64
 </div>
 </div>
 <p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code>,<code class="docutils literal notranslate"><span class="pre">ingresos</span></code>,<code class="docutils literal notranslate"><span class="pre">demanda</span></code> y <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>)</strong></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_knn_comparison</span><span class="p">(</span><span class="n">columna</span><span class="p">,</span> <span class="n">df_orig</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imp</span><span class="o">=</span><span class="n">df_imputado</span><span class="p">,</span> <span class="n">pal</span><span class="o">=</span><span class="n">PALETA</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1224,6 +1215,7 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1287,7 +1279,12 @@ dtype: int64
 <li><p><strong>K-S y Mann-Whitney U:</strong> Las dos muestras (original e imputada) provienen de la misma distribución.</p></li>
 <li><p><strong>Regla:</strong> Si <strong>p-valor &lt; 0.05</strong>, rechazamos la H0.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluar_imputacion</span><span class="p">(</span><span class="n">df_original</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="n">columna</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1343,6 +1340,7 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1464,7 +1462,12 @@ dtype: int64
 <h3><strong>Evaluación Estadística para Variables Categóricas Imputadas</strong><a class="headerlink" href="#evaluacion-estadistica-para-variables-categoricas-imputadas" title="Link to this heading">#</a></h3>
 <p>Para variables categóricas, la prueba adecuada es la <strong>Prueba de Chi-Cuadrado de Homogeneidad</strong>. Compara si las proporciones de las categorías son estadísticamente diferentes antes y después de la imputación. La hipótesis nula (H0) es que las distribuciones son iguales.</p>
 <p><strong>Código para Evaluación con Chi-Cuadrado:</strong></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2_contingency</span>
 
@@ -1493,8 +1496,14 @@ dtype: int64
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05). La imputación alteró la distribución.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05). La imputación preservó la distribución.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Ejecutar para las variables categóricas imputadas con moda</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar para las variables categóricas imputadas con moda</span>
 <span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">)</span>
 <span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;ciudad&#39;</span><span class="p">)</span>
 <span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;nivel_educativo&#39;</span><span class="p">)</span>
@@ -1564,6 +1573,10 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usamos BayesianRidge que es más robusto a la colinealidad que la regresión lineal simple</span>
+<span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_iterative_imputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">IterativeImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">BayesianRidge</span>
+
 <span class="n">imputer_mice</span> <span class="o">=</span> <span class="n">IterativeImputer</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">BayesianRidge</span><span class="p">(),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Aplicamos MICE solo a las columnas numéricas</span>
@@ -1619,7 +1632,12 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 </section>
 <section id="lightgbm">
 <h2><strong>2. LightGBM</strong><a class="headerlink" href="#lightgbm" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
 
@@ -1656,6 +1674,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1704,11 +1723,20 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <section id="gain">
 <h2><strong>3. GAIN</strong><a class="headerlink" href="#gain" title="Link to this heading">#</a></h2>
 <p>GAIN (Missing Data Imputation using Generative Adversarial Nets)  utiliza un enfoque de competencia entre un Generador, que rellena los datos faltantes, y un Discriminador, que intenta descubrir qué datos son reales y cuáles son imputados. La clave de su éxito es un mecanismo de pistas que guía al Discriminador, forzando al Generador a aprender la distribución verdadera de los datos. Además, el Generador no solo aprende a engañar, sino también a reconstruir los datos conocidos, lo que mejora significativamente la calidad de las imputaciones <span id="id1">[<a class="reference internal" href="references.html#id2" title="Jinsung Yoon, James Jordon, and Mihaela van der Schaar. Gain: missing data imputation using generative adversarial nets. 2018. arXiv:1806.02920.">1</a>]</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Código para Imputación con GAIN ---</span>
-
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># Asegúrate de que la ruta a GAIN esté en sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;C:/Users/Jose/Documents/GitHub/GAIN&#39;</span><span class="p">)</span>
 <span class="n">path_to_gain_code</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jose/Documents/GitHub/GAIN&#39;</span>
+
 <span class="kn">from</span> <span class="nn">gain</span> <span class="kn">import</span> <span class="n">gain</span>
 
 <span class="c1"># --- 1. Preparación de Datos ---</span>
@@ -1717,7 +1745,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <span class="n">df_numeric</span> <span class="o">=</span> <span class="n">df_gain</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span>
 <span class="n">original_index</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">index</span>
 <span class="n">original_columns</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
 <span class="n">df_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_numeric</span><span class="p">)</span>
 
@@ -1726,7 +1754,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
 <span class="s1">&#39;hint_rate&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
 <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-<span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">10000</span>
+<span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">5000</span>
 <span class="p">}</span>
 <span class="n">imputed_data</span> <span class="o">=</span> <span class="n">gain</span><span class="p">(</span><span class="n">df_scaled</span><span class="p">,</span> <span class="n">gain_parameters</span><span class="p">)</span>
 
@@ -1738,8 +1766,6 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 
 <span class="c1"># --- 4. Evaluación ---</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Imputación con GAIN completada. Visualizando resultados... ---&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#348ABD&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original (sin NaN)&#39;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputed_gain</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Después de Imputación con GAIN&#39;</span><span class="p">)</span>
@@ -1748,18 +1774,15 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ruta &#39;C:/Users/Jose/Documents/GitHub/GAIN&#39; añadida al sistema. Importando GAIN...
-WARNING:tensorflow:From C:\Users/Jose/Documents/GitHub/GAIN\gain.py:148: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 10000/10000 [00:16&lt;00:00, 617.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 5000/5000 [00:07&lt;00:00, 641.04it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Imputación con GAIN completada. Visualizando resultados... ---
 </pre></div>
 </div>
-<img alt="_images/a6f090d9cc9cec1d7792a6888d5c369d5b419d0a9e7e498e1980cba02d94f872.png" src="_images/a6f090d9cc9cec1d7792a6888d5c369d5b419d0a9e7e498e1980cba02d94f872.png" />
+<img alt="_images/0064f455d683d34f69493790502b156633ef2b61e2dbd95c6483c61a033f604a.png" src="_images/0064f455d683d34f69493790502b156633ef2b61e2dbd95c6483c61a033f604a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1776,13 +1799,13 @@ WARNING:tensorflow:From C:\Users/Jose/Documents/GitHub/GAIN\gain.py:148: The nam
    Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
 
 2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
-   Estadístico = 0.100, p-valor = 2.473e-03
+   Estadístico = 0.124, p-valor = 6.740e-05
    Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 
 3. Prueba de Comparación de Centralidad:
    Aplicando t-test de Student (asumiendo normalidad):
-   Estadístico = 0.118, p-valor = 9.058e-01
-   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).
+   Estadístico = 2.195, p-valor = 2.844e-02
+   Conclusión: Las medias son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 --------------------------------------------------
 </pre></div>
 </div>

@@ -1,0 +1,2066 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Taller de Imputación de Datos &#8212; Taller Imputación de Datos</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Taller_Imputacion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Referencias" href="references.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logoUN.png" class="logo__image only-light" alt="Taller Imputación de Datos - Home"/>
+    <script>document.write(`<img src="_static/logoUN.png" class="logo__image only-dark" alt="Taller Imputación de Datos - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Taller de Imputación de Datos
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="references.html">Referencias</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LasciaStare/Taller-Imputacion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LasciaStare/Taller-Imputacion/issues/new?title=Issue%20on%20page%20%2FTaller_Imputacion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Taller_Imputacion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Taller de Imputación de Datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Taller de Imputación de Datos</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-inicial">Configuración Inicial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-inicial-de-las-variables">1. Exploración Inicial de las Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-variables">Clasificación de Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-valores-faltantes">2. Detección de Valores Faltantes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-patrones-de-datos-faltantes">Clasificación de Patrones de datos faltantes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-y-representacion-de-la-imputacion">5. Aplicación y Representación de la Imputación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-simple-mediana-y-moda"><strong>Imputación Simple (Mediana y Moda)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-por-moda-agrupada-segmento"><strong>Imputación por Moda Agrupada (<code class="docutils literal notranslate"><span class="pre">segmento</span></code>)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-nueva-categoria-estado-civil"><strong>Creación de Nueva Categoría (<code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-imputacion-multivariada-con-knn"><strong>Paso 3: Imputación Multivariada con KNN</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-imputacion">6. Evaluación de la Imputación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-resultados-validacion-estadistica">Interpretación de Resultados: Validación Estadística</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-estadistica-para-variables-categoricas-imputadas"><strong>Evaluación Estadística para Variables Categóricas Imputadas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-chi-cuadrado">Validación Chi-Cuadrado:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-por-variable">Resultados por Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-causas-del-fallo">Posibles causas del fallo.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intentos-de-imputar-puntuacion-credito"><strong>Intentos de imputar <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mice"><strong>1. MICE</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightgbm"><strong>2. LightGBM</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gain"><strong>3. GAIN</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-para-puntuacion-credito"><strong>Conclusiones para <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-el-arte-de-torturar-los-datos-hasta-que-confiesen-una-mentira"><strong>Conclusión: El Arte de Torturar los Datos Hasta que Confiesen una Mentira</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-resumen"><strong>Tabla Resumen</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="taller-de-imputacion-de-datos">
+<h1><strong>Taller de Imputación de Datos</strong><a class="headerlink" href="#taller-de-imputacion-de-datos" title="Link to this heading">#</a></h1>
+<section id="configuracion-inicial">
+<h2>Configuración Inicial<a class="headerlink" href="#configuracion-inicial" title="Link to this heading">#</a></h2>
+<p>Primero, importamos todas las librerías que necesitaremos a lo largo del taller.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Manipulación de datos</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Visualización</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+
+<span class="c1"># Pruebas estadísticas</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># Configuración para visualizaciones</span>
+<span class="n">PALETA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;antes&#39;</span><span class="p">:</span> <span class="s1">&#39;#348ABD&#39;</span><span class="p">,</span>  <span class="c1"># Azul</span>
+    <span class="s1">&#39;despues_ok&#39;</span><span class="p">:</span> <span class="s1">&#39;#46B39D&#39;</span><span class="p">,</span> <span class="c1"># Verde azulado (Teal)</span>
+    <span class="s1">&#39;despues_peligro&#39;</span><span class="p">:</span> <span class="s1">&#39;#E24A33&#39;</span> <span class="c1"># Rojo coral</span>
+<span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exploracion-inicial-de-las-variables">
+<h2>1. Exploración Inicial de las Variables<a class="headerlink" href="#exploracion-inicial-de-las-variables" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cargar el dataset desde la URL de GitHub</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/Kalbam/Datos/main/base_imputacion_mixta_1000.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+
+
+<span class="c1"># Observar la estructura general</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Primeras 5 filas del dataset:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Información general y tipos de datos:&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Primeras 5 filas del dataset:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fecha</th>
+      <th>sexo</th>
+      <th>ciudad</th>
+      <th>nivel_educativo</th>
+      <th>segmento</th>
+      <th>estado_civil</th>
+      <th>edad</th>
+      <th>altura_cm</th>
+      <th>ingresos</th>
+      <th>gasto_mensual</th>
+      <th>puntuacion_credito</th>
+      <th>demanda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2024-01-01</td>
+      <td>F</td>
+      <td>Medellín</td>
+      <td>NaN</td>
+      <td>B</td>
+      <td>Unión libre</td>
+      <td>19.0</td>
+      <td>161.821754</td>
+      <td>3574.753806</td>
+      <td>1832.731832</td>
+      <td>640.465372</td>
+      <td>119.202995</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-01-02</td>
+      <td>F</td>
+      <td>Barranquilla</td>
+      <td>NaN</td>
+      <td>B</td>
+      <td>NaN</td>
+      <td>52.0</td>
+      <td>167.819566</td>
+      <td>3163.626815</td>
+      <td>NaN</td>
+      <td>533.108430</td>
+      <td>124.457874</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2024-01-03</td>
+      <td>M</td>
+      <td>Bogotá</td>
+      <td>Secundaria</td>
+      <td>B</td>
+      <td>Soltero/a</td>
+      <td>38.0</td>
+      <td>165.756219</td>
+      <td>2765.672259</td>
+      <td>1219.535074</td>
+      <td>491.016910</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2024-01-04</td>
+      <td>F</td>
+      <td>Bogotá</td>
+      <td>NaN</td>
+      <td>B</td>
+      <td>Casado/a</td>
+      <td>57.0</td>
+      <td>160.642670</td>
+      <td>4320.397345</td>
+      <td>1908.324816</td>
+      <td>NaN</td>
+      <td>129.426792</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024-01-05</td>
+      <td>M</td>
+      <td>Cali</td>
+      <td>Técnico</td>
+      <td>B</td>
+      <td>Soltero/a</td>
+      <td>67.0</td>
+      <td>151.402909</td>
+      <td>NaN</td>
+      <td>1887.385697</td>
+      <td>610.213994</td>
+      <td>133.916319</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Información general y tipos de datos:
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 12 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   fecha               1000 non-null   object 
+ 1   sexo                980 non-null    object 
+ 2   ciudad              950 non-null    object 
+ 3   nivel_educativo     900 non-null    object 
+ 4   segmento            800 non-null    object 
+ 5   estado_civil        650 non-null    object 
+ 6   edad                970 non-null    float64
+ 7   altura_cm           920 non-null    float64
+ 8   ingresos            880 non-null    float64
+ 9   gasto_mensual       750 non-null    float64
+ 10  puntuacion_credito  500 non-null    float64
+ 11  demanda             850 non-null    float64
+dtypes: float64(6), object(6)
+memory usage: 93.9+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estadísticas descriptivas para todas las variables:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estadísticas descriptivas para todas las variables:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>fecha</th>
+      <th>sexo</th>
+      <th>ciudad</th>
+      <th>nivel_educativo</th>
+      <th>segmento</th>
+      <th>estado_civil</th>
+      <th>edad</th>
+      <th>altura_cm</th>
+      <th>ingresos</th>
+      <th>gasto_mensual</th>
+      <th>puntuacion_credito</th>
+      <th>demanda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1000</td>
+      <td>980</td>
+      <td>950</td>
+      <td>900</td>
+      <td>800</td>
+      <td>650</td>
+      <td>970.000000</td>
+      <td>920.000000</td>
+      <td>880.000000</td>
+      <td>750.000000</td>
+      <td>500.000000</td>
+      <td>850.000000</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>1000</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>2026-09-26</td>
+      <td>F</td>
+      <td>Bogotá</td>
+      <td>Secundaria</td>
+      <td>B</td>
+      <td>Soltero/a</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>1</td>
+      <td>518</td>
+      <td>307</td>
+      <td>317</td>
+      <td>457</td>
+      <td>290</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>42.861856</td>
+      <td>167.760096</td>
+      <td>3681.294745</td>
+      <td>1687.810749</td>
+      <td>599.077500</td>
+      <td>160.305759</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.621382</td>
+      <td>9.275530</td>
+      <td>1079.326096</td>
+      <td>582.070174</td>
+      <td>79.828186</td>
+      <td>25.357794</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.000000</td>
+      <td>140.000000</td>
+      <td>487.662547</td>
+      <td>100.000000</td>
+      <td>373.657944</td>
+      <td>99.875828</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>30.000000</td>
+      <td>161.488768</td>
+      <td>2999.416229</td>
+      <td>1309.239768</td>
+      <td>544.467843</td>
+      <td>139.505538</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>43.000000</td>
+      <td>167.714614</td>
+      <td>3669.620507</td>
+      <td>1676.193764</td>
+      <td>599.692595</td>
+      <td>160.721251</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>55.000000</td>
+      <td>173.999069</td>
+      <td>4375.093656</td>
+      <td>2063.260990</td>
+      <td>653.345068</td>
+      <td>181.100754</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>69.000000</td>
+      <td>195.766921</td>
+      <td>7016.246936</td>
+      <td>3532.593603</td>
+      <td>823.539585</td>
+      <td>222.093047</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="clasificacion-de-variables">
+<h2>Clasificación de Variables<a class="headerlink" href="#clasificacion-de-variables" title="Link to this heading">#</a></h2>
+<p><strong>Variables Numéricas:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">altura_cm</span></code>, <code class="docutils literal notranslate"><span class="pre">ingresos</span></code>, <code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code>: Continuas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>, <code class="docutils literal notranslate"><span class="pre">demanda</span></code>: Numéricas continuas</p></li>
+</ul>
+<p><strong>Variables Categóricas:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sexo</span></code>, <code class="docutils literal notranslate"><span class="pre">ciudad</span></code>, <code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>: Nominales (sin jerarquía)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nivel_educativo</span></code>, <code class="docutils literal notranslate"><span class="pre">segmento</span></code>: Ordinales (orden inherente)</p></li>
+</ul>
+<p><strong>Variable Temporal:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fecha</span></code>: Actualmente como <code class="docutils literal notranslate"><span class="pre">object</span></code> - <strong>requiere conversión a <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> para análisis temporal</strong></p></li>
+</ul>
+</section>
+<section id="deteccion-de-valores-faltantes">
+<h2>2. Detección de Valores Faltantes<a class="headerlink" href="#deteccion-de-valores-faltantes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calcular el número y porcentaje de valores faltantes por variable</span>
+<span class="n">missing_values</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">missing_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">missing_values</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Crear un DataFrame para mostrar los resultados</span>
+<span class="n">missing_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Nulos&#39;</span><span class="p">:</span> <span class="n">missing_values</span><span class="p">,</span>
+    <span class="s1">&#39;Porcentaje (%)&#39;</span><span class="p">:</span> <span class="n">missing_percentage</span>
+<span class="p">})</span>
+
+<span class="c1"># Filtrar solo las variables con valores faltantes y ordenar</span>
+<span class="n">missing_info</span> <span class="o">=</span> <span class="n">missing_info</span><span class="p">[</span><span class="n">missing_info</span><span class="p">[</span><span class="s1">&#39;Nulos&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Porcentaje (%)&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resumen de valores faltantes:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">missing_info</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resumen de valores faltantes:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nulos</th>
+      <th>Porcentaje (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>puntuacion_credito</th>
+      <td>500</td>
+      <td>50.0</td>
+    </tr>
+    <tr>
+      <th>estado_civil</th>
+      <td>350</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>gasto_mensual</th>
+      <td>250</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>segmento</th>
+      <td>200</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>demanda</th>
+      <td>150</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>ingresos</th>
+      <td>120</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>nivel_educativo</th>
+      <td>100</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>altura_cm</th>
+      <td>80</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>ciudad</th>
+      <td>50</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>edad</th>
+      <td>30</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>sexo</th>
+      <td>20</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Representación gráfica de los nulos</span>
+
+<span class="c1"># 1. Gráfico de barras con el porcentaje de nulos</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">missing_info</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">missing_info</span><span class="p">[</span><span class="s1">&#39;Porcentaje (%)&#39;</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">missing_info</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Valores Faltantes por Variable&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porcentaje (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 2. Mapa de calor (matriz de nulidad)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Mapa de calor de la distribución de valores faltantes:&quot;</span><span class="p">)</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Valores Faltantes en el Dataset&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ca1e2095941d899888add138d87e2af4675eacdfb91e07b2e148fcd6f1ae9f06.png" src="_images/ca1e2095941d899888add138d87e2af4675eacdfb91e07b2e148fcd6f1ae9f06.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mapa de calor de la distribución de valores faltantes:
+</pre></div>
+</div>
+<img alt="_images/bd2bf638f384b96a81167d9ed69c31ece3d8b3f9ae8c2892058237077f7f23f4.png" src="_images/bd2bf638f384b96a81167d9ed69c31ece3d8b3f9ae8c2892058237077f7f23f4.png" />
+</div>
+</div>
+</section>
+<section id="clasificacion-de-patrones-de-datos-faltantes">
+<h2>Clasificación de Patrones de datos faltantes<a class="headerlink" href="#clasificacion-de-patrones-de-datos-faltantes" title="Link to this heading">#</a></h2>
+<p><strong>Análisis hipotético basado en porcentajes y naturaleza de variables:</strong></p>
+<p><strong>MNAR (No Aleatorio):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code> (50%): Ausencia sistemática - jóvenes sin historial crediticio o ingresos insuficientes para evaluación</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">estado_civil</span></code> (35%): Sensibilidad personal - reluctancia selectiva según categoría (divorciados/viudos vs solteros)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code> (25%): Auto-censura en extremos - gastos muy altos/bajos menos reportados</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ingresos</span></code> (12%): Clásico MNAR - ocultamiento por privacidad en rangos extremos</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nivel_educativo</span></code> (10%): Sesgo de reporte - niveles bajos menos declarados</p></li>
+</ul>
+<p><strong>MAR (Aleatorio Observable):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">segmento</span></code> (20%): Dependiente de <code class="docutils literal notranslate"><span class="pre">ciudad</span></code> - segmentación inexistente para ciertas ubicaciones</p></li>
+</ul>
+<p><strong>MCAR (Completamente Aleatorio):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">altura_cm</span></code>, <code class="docutils literal notranslate"><span class="pre">ciudad</span></code>, <code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">sexo</span></code> (2-8%): Errores de captura aleatorios, fallos técnicos</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Implicación metodológica:</strong> MNAR requiere modelos de imputación sofisticados o análisis de sensibilidad. MAR permite imputación condicional. MCAR admite eliminación listwise sin sesgo.</p>
+</div></blockquote>
+<section id="aplicacion-y-representacion-de-la-imputacion">
+<h3>5. Aplicación y Representación de la Imputación<a class="headerlink" href="#aplicacion-y-representacion-de-la-imputacion" title="Link to this heading">#</a></h3>
+<p><strong>Enfoque metodológico por tipo:</strong></p>
+<p><strong>Imputación Conservadora (MCAR):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">edad</span></code>, <code class="docutils literal notranslate"><span class="pre">altura_cm</span></code>: Mediana (robusta a outliers)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sexo</span></code>, <code class="docutils literal notranslate"><span class="pre">ciudad</span></code>, <code class="docutils literal notranslate"><span class="pre">nivel_educativo</span></code>: Moda (preserva distribución original)</p></li>
+</ul>
+<p><strong>Imputación por Moda agrupada (MAR):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">segmento</span></code>: Segmento más frecuente para cada ciudad.</p></li>
+</ul>
+<p><strong>Categoría Explícita (MNAR Alto):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>: Nueva categoría ‘No_Informado’ (evita sesgo de imputación)</p></li>
+</ul>
+<p><strong>Imputación Relacional (MAR/MNAR Moderado):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ingresos</span></code>, <code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code>: KNN multivariado (captura correlaciones)</p></li>
+</ul>
+<p><strong>Demostración de Riesgo:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>: KNN - visualizaremos distorsión distribucional y correlacional</p></li>
+</ul>
+<hr class="docutils" />
+<section id="imputacion-simple-mediana-y-moda">
+<h4><strong>Imputación Simple (Mediana y Moda)</strong><a class="headerlink" href="#imputacion-simple-mediana-y-moda" title="Link to this heading">#</a></h4>
+<p>Comenzamos con las imputaciones más seguras y directas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una copia del DataFrame para las imputaciones</span>
+<span class="n">df_imputado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Imputación con Mediana para numéricas con pocos nulos</span>
+<span class="n">median_altura</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">median_altura</span><span class="p">)</span>
+
+<span class="n">median_edad</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">median_edad</span><span class="p">)</span>
+
+<span class="c1"># Imputación con Moda para categóricas con pocos nulos</span>
+<span class="n">mode_ciudad</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;ciudad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;ciudad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;ciudad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mode_ciudad</span><span class="p">)</span>
+
+<span class="n">mode_sexo</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mode_sexo</span><span class="p">)</span>
+
+<span class="n">mode_nivel_educativo</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;nivel_educativo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;nivel_educativo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;nivel_educativo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mode_nivel_educativo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">altura_cm</span></code>)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para altura_cm</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Altura (cm) - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Altura (cm) - Después de Imputar (Mediana)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Altura&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e5f6fd37bd6373bf66cff66e61e632e7ac7f8c93d5775a10669aee4825c1afed.png" src="_images/e5f6fd37bd6373bf66cff66e61e632e7ac7f8c93d5775a10669aee4825c1afed.png" />
+</div>
+</div>
+</section>
+<section id="imputacion-por-moda-agrupada-segmento">
+<h4><strong>Imputación por Moda Agrupada (<code class="docutils literal notranslate"><span class="pre">segmento</span></code>)</strong><a class="headerlink" href="#imputacion-por-moda-agrupada-segmento" title="Link to this heading">#</a></h4>
+<p>Dado que la ausencia depende de otra categoría, la imputación por Moda agrupada imputaría el segmento más frecuente para cada ciudad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputación de &#39;segmento&#39; usando la moda de cada grupo &#39;ciudad&#39;</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;segmento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ciudad&#39;</span><span class="p">)[</span><span class="s1">&#39;segmento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span><span class="o">.</span><span class="n">empty</span> <span class="k">else</span> <span class="s2">&quot;Desconocido&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Verificar si aún quedan nulos en &#39;segmento&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nulos restantes en &#39;segmento&#39;:&quot;</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;segmento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nulos restantes en &#39;segmento&#39;: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para segmento</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;segmento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Segmento - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;segmento&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Segmento - Después de Imputar (Moda)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Segmento&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d739268339eba121192d0f7c775e94ad930c9bf6d10f995938f46f21b9f80a0f.png" src="_images/d739268339eba121192d0f7c775e94ad930c9bf6d10f995938f46f21b9f80a0f.png" />
+</div>
+</div>
+</section>
+<section id="creacion-de-nueva-categoria-estado-civil">
+<h4><strong>Creación de Nueva Categoría (<code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>)</strong><a class="headerlink" href="#creacion-de-nueva-categoria-estado-civil" title="Link to this heading">#</a></h4>
+<p>Para <code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>, en lugar de forzar una categoría existente, reconocemos la ausencia como información.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imputar con una nueva categoría &#39;No Informado&#39;</span>
+
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;No Informado&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estado Civil - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estado Civil - Después de Imputar (&quot;No Informado&quot;)&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Frecuencias de Estado Civil&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e27a1ab3f5a2ed76ffba2cef72a3c4eb24eda5dcd92fe9ed581868f438239d90.png" src="_images/e27a1ab3f5a2ed76ffba2cef72a3c4eb24eda5dcd92fe9ed581868f438239d90.png" />
+</div>
+</div>
+<p><em>Observación: La nueva categoría ‘No Informado’ es ahora la segunda más frecuente, capturando el patrón de ausencia sin distorsionar las categorías originales.</em></p>
+</section>
+<section id="paso-3-imputacion-multivariada-con-knn">
+<h4><strong>Paso 3: Imputación Multivariada con KNN</strong><a class="headerlink" href="#paso-3-imputacion-multivariada-con-knn" title="Link to this heading">#</a></h4>
+<p>Ahora usamos KNN para las variables numéricas más complejas, incluyendo nuestro caso de estudio <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seleccionar las columnas numéricas para KNN (incluyendo las ya imputadas para ayudar al modelo)</span>
+<span class="n">numeric_cols_knn</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;altura_cm&#39;</span><span class="p">,</span> <span class="s1">&#39;ingresos&#39;</span><span class="p">,</span> <span class="s1">&#39;gasto_mensual&#39;</span><span class="p">,</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">,</span> <span class="s1">&#39;demanda&#39;</span><span class="p">]</span>
+
+<span class="c1"># Crear e instanciar el imputador KNN</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">KNNImputer</span>
+<span class="n">imputer_knn</span> <span class="o">=</span> <span class="n">KNNImputer</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Aplicar la imputación</span>
+<span class="n">df_imputado</span><span class="p">[</span><span class="n">numeric_cols_knn</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputer_knn</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="n">numeric_cols_knn</span><span class="p">])</span>
+
+<span class="c1"># Verificar que no queden nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="n">numeric_cols_knn</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>edad                  0
+altura_cm             0
+ingresos              0
+gasto_mensual         0
+puntuacion_credito    0
+demanda               0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code>,<code class="docutils literal notranslate"><span class="pre">ingresos</span></code>,<code class="docutils literal notranslate"><span class="pre">demanda</span></code> y <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>)</strong></p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_knn_comparison</span><span class="p">(</span><span class="n">columna</span><span class="p">,</span> <span class="n">df_orig</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imp</span><span class="o">=</span><span class="n">df_imputado</span><span class="p">,</span> <span class="n">pal</span><span class="o">=</span><span class="n">PALETA</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función compacta para visualizar la distribución de una columna antes y </span>
+<span class="sd">    después de la imputación KNN.</span>
+<span class="sd">    </span>
+<span class="sd">    Asume que los DataFrames &#39;df&#39;, &#39;df_imputado&#39; y la paleta &#39;PALETA&#39; </span>
+<span class="sd">    están definidos en el entorno.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">titulo_columna</span> <span class="o">=</span> <span class="n">columna</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Gráfico &quot;Antes&quot;</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_orig</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">pal</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2"> - Antes de Imputar&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Gráfico &quot;Después&quot;</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imp</span><span class="p">[</span><span class="n">columna</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">pal</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2"> - Después de Imputar (KNN)&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Comparación de Distribución de </span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para gasto_mensual</span>
+<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;gasto_mensual&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/923923a6a1b1031c87dba1ad79f02d4cf9467fc19c2d7b3dbb8aff9b1e1e4213.png" src="_images/923923a6a1b1031c87dba1ad79f02d4cf9467fc19c2d7b3dbb8aff9b1e1e4213.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para ingresos</span>
+<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;ingresos&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dfc75a935a2a655cbab96510d8b98d998382291dccdb86047b11b366709314e8.png" src="_images/dfc75a935a2a655cbab96510d8b98d998382291dccdb86047b11b366709314e8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para demanda</span>
+<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;demanda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1961c10c8b9f68e891c40de2c9a309d2ed52789d68cf763817c2d74c5180f7a9.png" src="_images/1961c10c8b9f68e891c40de2c9a309d2ed52789d68cf763817c2d74c5180f7a9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para puntuacion_credito (el caso problemático)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_peligro&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Después de Imputar (KNN)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Puntuación de Crédito&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c1c860b80b48698628bf9f862f4f39802501755ab6cda9b4eb49c55817685246.png" src="_images/c1c860b80b48698628bf9f862f4f39802501755ab6cda9b4eb49c55817685246.png" />
+</div>
+</div>
+<p><em>Observación: En el gráfico de <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>, se observa un pico artificial muy pronunciado en el centro de la distribución. Este es el resultado directo de imputar el 50% de los datos. El algoritmo KNN, al no encontrar vecinos suficientemente variados, tiende a converger en valores promedio, creando una distribución falsa que no refleja la realidad.</em></p>
+</section>
+</section>
+<section id="evaluacion-de-la-imputacion">
+<h3>6. Evaluación de la Imputación<a class="headerlink" href="#evaluacion-de-la-imputacion" title="Link to this heading">#</a></h3>
+<p>Ahora, validaremos estadísticamente si las imputaciones alteraron significativamente las distribuciones originales de las variables numéricas. Usaremos la misma función de evaluación con las pruebas de <strong>Shapiro-Wilk</strong>, <strong>Kolmogorov-Smirnov</strong> y <strong>Mann-Whitney U</strong>.</p>
+<p><strong>Recordatorio de Hipótesis Nula (H0):</strong></p>
+<ul class="simple">
+<li><p><strong>Shapiro-Wilk:</strong> Los datos provienen de una distribución normal.</p></li>
+<li><p><strong>K-S y Mann-Whitney U:</strong> Las dos muestras (original e imputada) provienen de la misma distribución.</p></li>
+<li><p><strong>Regla:</strong> Si <strong>p-valor &lt; 0.05</strong>, rechazamos la H0.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluar_imputacion</span><span class="p">(</span><span class="n">df_original</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="n">columna</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función para realizar pruebas estadísticas y evaluar el efecto de la imputación en una columna.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Evaluación para la columna: </span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Extraer las distribuciones</span>
+    <span class="n">dist_original</span> <span class="o">=</span> <span class="n">df_original</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">dist_imputada</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span>
+    
+    <span class="c1"># 1. Prueba de Normalidad (Shapiro-Wilk) sobre los datos originales</span>
+    <span class="n">shapiro_stat</span><span class="p">,</span> <span class="n">shapiro_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">shapiro</span><span class="p">(</span><span class="n">dist_original</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Estadístico = </span><span class="si">{</span><span class="n">shapiro_stat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-valor = </span><span class="si">{</span><span class="n">shapiro_p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shapiro_p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: Los datos originales NO siguen una distribución normal (p &lt; 0.05).&quot;</span><span class="p">)</span>
+        <span class="n">es_normal</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).&quot;</span><span class="p">)</span>
+        <span class="n">es_normal</span> <span class="o">=</span> <span class="kc">True</span>
+        
+    <span class="c1"># 2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov)</span>
+    <span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ks_2samp</span><span class="p">(</span><span class="n">dist_original</span><span class="p">,</span> <span class="n">dist_imputada</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Estadístico = </span><span class="si">{</span><span class="n">ks_stat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-valor = </span><span class="si">{</span><span class="n">ks_p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ks_p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05).&quot;</span><span class="p">)</span>
+        
+    <span class="c1"># 3. Comparación de Medias o Rangos</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">3. Prueba de Comparación de Centralidad:&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">es_normal</span><span class="p">:</span>
+        <span class="c1"># Prueba t de Student (para datos normales)</span>
+        <span class="n">t_stat</span><span class="p">,</span> <span class="n">t_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">dist_original</span><span class="p">,</span> <span class="n">dist_imputada</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Welch&#39;s t-test</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Aplicando t-test de Student (asumiendo normalidad):&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Estadístico = </span><span class="si">{</span><span class="n">t_stat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-valor = </span><span class="si">{</span><span class="n">t_p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t_p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: Las medias son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Prueba U de Mann-Whitney (para datos no normales)</span>
+        <span class="n">u_stat</span><span class="p">,</span> <span class="n">u_p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">mannwhitneyu</span><span class="p">(</span><span class="n">dist_original</span><span class="p">,</span> <span class="n">dist_imputada</span><span class="p">,</span> <span class="n">alternative</span><span class="o">=</span><span class="s1">&#39;two-sided&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Aplicando U de Mann-Whitney (datos no normales):&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Estadístico = </span><span class="si">{</span><span class="n">u_stat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-valor = </span><span class="si">{</span><span class="n">u_p</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">u_p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: Las medianas/distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   Conclusión: No hay evidencia de diferencia significativa entre las medianas/distribuciones (p &gt;= 0.05).&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluar las variables numéricas imputadas</span>
+<span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;altura_cm&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;ingresos&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;gasto_mensual&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;demanda&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación para la columna: altura_cm ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 5.911e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.040, p-valor = 4.133e-01
+   Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 0.009, p-valor = 9.930e-01
+   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).
+--------------------------------------------------
+--- Evaluación para la columna: ingresos ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 3.245e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.022, p-valor = 9.680e-01
+   Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 0.570, p-valor = 5.685e-01
+   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).
+--------------------------------------------------
+--- Evaluación para la columna: gasto_mensual ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 6.752e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.057, p-valor = 1.194e-01
+   Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 0.865, p-valor = 3.874e-01
+   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).
+--------------------------------------------------
+--- Evaluación para la columna: puntuacion_credito ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 9.405e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.197, p-valor = 9.493e-12
+   Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 3.888, p-valor = 1.093e-04
+   Conclusión: Las medias son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+--------------------------------------------------
+--- Evaluación para la columna: demanda ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.985, p-valor = 1.130e-07
+   Conclusión: Los datos originales NO siguen una distribución normal (p &lt; 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.034, p-valor = 6.406e-01
+   Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando U de Mann-Whitney (datos no normales):
+   Estadístico = 419970.000, p-valor = 6.605e-01
+   Conclusión: No hay evidencia de diferencia significativa entre las medianas/distribuciones (p &gt;= 0.05).
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpretacion-de-resultados-validacion-estadistica">
+<h2>Interpretación de Resultados: Validación Estadística<a class="headerlink" href="#interpretacion-de-resultados-validacion-estadistica" title="Link to this heading">#</a></h2>
+<p><strong>Hallazgo clave:</strong> Normalidad confirmada en datos originales (p &gt; 0.05) - justifica uso de t-tests para comparación de medias.</p>
+<p><strong>Resultados por variable:</strong></p>
+<p><strong>Imputaciones Exitosas:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">altura_cm</span></code> (Mediana): K-S p=0.413, t-test p=0.993 → <strong>Preservación perfecta</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ingresos</span></code> (KNN, 12%): K-S p=0.968, t-test p=0.568 → <strong>Excelente performance</strong> pese a sospecha MNAR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code> (KNN, 25%): K-S p=0.119, t-test p=0.387 → <strong>Robustez de KNN</strong> ante missingness moderado</p></li>
+</ul>
+<p><strong>Falla Sistemática:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code> (KNN, 50%): K-S p=9.5e-12, t-test p=1.1e-04 → <strong>Distorsión masiva confirmada</strong></p></li>
+</ul>
+<p><strong>Conclusiones Metodológicas:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Umbral crítico</strong>: 50% missingness → territorio no-imputable</p></li>
+<li><p><strong>KNN superior</strong> a métodos simples para MAR/MNAR moderado</p></li>
+<li><p><strong>Validación estadística esencial</strong> - lo visual puede engañar</p></li>
+</ol>
+<blockquote>
+<div><p><strong>Regla práctica:</strong> Missingness &gt;40% en variables MNAR = <strong>flag rojo</strong> para eliminación de variable antes que imputación.</p>
+</div></blockquote>
+<section id="evaluacion-estadistica-para-variables-categoricas-imputadas">
+<h3><strong>Evaluación Estadística para Variables Categóricas Imputadas</strong><a class="headerlink" href="#evaluacion-estadistica-para-variables-categoricas-imputadas" title="Link to this heading">#</a></h3>
+<p>Para variables categóricas, la prueba adecuada es la <strong>Prueba de Chi-Cuadrado de Homogeneidad</strong>. Compara si las proporciones de las categorías son estadísticamente diferentes antes y después de la imputación. La hipótesis nula (H0) es que las distribuciones son iguales.</p>
+<p><strong>Código para Evaluación con Chi-Cuadrado:</strong></p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi2_contingency</span>
+
+<span class="k">def</span> <span class="nf">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df_original</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="n">columna</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evalúa la imputación de una variable categórica usando Chi-Cuadrado.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Evaluación Chi-Cuadrado para: </span><span class="si">{</span><span class="n">columna</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Frecuencias originales (sin nulos)</span>
+    <span class="n">freq_original</span> <span class="o">=</span> <span class="n">df_original</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    
+    <span class="c1"># Frecuencias después de imputar (sobre el mismo índice de datos originales no nulos)</span>
+    <span class="c1"># Esto es para comparar &quot;manzanas con manzanas&quot; y ver si las proporciones cambiaron.</span>
+    <span class="c1"># Una prueba más directa es sobre toda la muestra.</span>
+    <span class="n">freq_imputada</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+    <span class="c1"># Creamos una tabla de contingencia</span>
+    <span class="n">tabla_contingencia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Original&#39;</span><span class="p">:</span> <span class="n">freq_original</span><span class="p">,</span> <span class="s1">&#39;Imputada&#39;</span><span class="p">:</span> <span class="n">freq_imputada</span><span class="p">})</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+    <span class="n">chi2</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">dof</span><span class="p">,</span> <span class="n">expected</span> <span class="o">=</span> <span class="n">chi2_contingency</span><span class="p">(</span><span class="n">tabla_contingencia</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estadístico Chi-Cuadrado = </span><span class="si">{</span><span class="n">chi2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-valor = </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05). La imputación alteró la distribución.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05). La imputación preservó la distribución.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejecutar para las variables categóricas imputadas con moda</span>
+<span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;ciudad&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;nivel_educativo&#39;</span><span class="p">)</span>
+<span class="n">evaluar_imputacion_categorica</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;segmento&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación Chi-Cuadrado para: sexo ---
+Estadístico Chi-Cuadrado = 0.141, p-valor = 0.707
+Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05). La imputación preservó la distribución.
+
+--- Evaluación Chi-Cuadrado para: ciudad ---
+Estadístico Chi-Cuadrado = 2.485, p-valor = 0.647
+Conclusión: NO hay evidencia de una diferencia significativa entre las distribuciones (p &gt;= 0.05). La imputación preservó la distribución.
+
+--- Evaluación Chi-Cuadrado para: nivel_educativo ---
+Estadístico Chi-Cuadrado = 8.384, p-valor = 0.039
+Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05). La imputación alteró la distribución.
+
+--- Evaluación Chi-Cuadrado para: segmento ---
+Estadístico Chi-Cuadrado = 13.855, p-valor = 0.001
+Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05). La imputación alteró la distribución.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="validacion-chi-cuadrado">
+<h2>Validación Chi-Cuadrado:<a class="headerlink" href="#validacion-chi-cuadrado" title="Link to this heading">#</a></h2>
+<p><strong>Hallazgo clave:</strong> Pruebas estadísticas confirman hipótesis MCAR vs MAR/MNAR.</p>
+<section id="resultados-por-variable">
+<h3>Resultados por Variable<a class="headerlink" href="#resultados-por-variable" title="Link to this heading">#</a></h3>
+<p><strong>Imputaciones Exitosas (MCAR confirmado):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sexo</span></code>: χ²=0.141, p=0.707 → <strong>Distribución preservada</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ciudad</span></code>: χ²=2.485, p=0.647 → <strong>Moda simple efectiva</strong></p></li>
+</ul>
+<p><strong>Fallas Significativas (MAR/MNAR confirmado):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nivel_educativo</span></code>: χ²=8.384, <strong>p=0.039</strong> → <strong>Sesgo introducido</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">segmento</span></code>: χ²=13.855, <strong>p=0.001</strong> → <strong>Distorsión severa</strong></p></li>
+</ul>
+</section>
+<section id="posibles-causas-del-fallo">
+<h3>Posibles causas del fallo.<a class="headerlink" href="#posibles-causas-del-fallo" title="Link to this heading">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">nivel_educativo</span></code> (MNAR):</strong></p>
+<ul class="simple">
+<li><p>Moda infla artificialmente categoría dominante.</p></li>
+<li><p>Nulos probablemente = niveles bajos no reportados → forzados a “Bachiller”</p></li>
+<li><p><strong>Sesgo de reporte validado estadísticamente</strong></p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">segmento</span></code> (MAR):</strong></p>
+<ul class="simple">
+<li><p>Moda agrupada elimina variabilidad intra-ciudad</p></li>
+<li><p>Homogenización artificial.</p></li>
+<li><p><strong>Relación ciudad-segmento contaminada</strong></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="intentos-de-imputar-puntuacion-credito">
+<h1><strong>Intentos de imputar <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong><a class="headerlink" href="#intentos-de-imputar-puntuacion-credito" title="Link to this heading">#</a></h1>
+<section id="mice">
+<h2><strong>1. MICE</strong><a class="headerlink" href="#mice" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Usamos BayesianRidge que es más robusto a la colinealidad que la regresión lineal simple</span>
+<span class="kn">from</span> <span class="nn">sklearn.experimental</span> <span class="kn">import</span> <span class="n">enable_iterative_imputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">IterativeImputer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">BayesianRidge</span>
+
+<span class="n">imputer_mice</span> <span class="o">=</span> <span class="n">IterativeImputer</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">BayesianRidge</span><span class="p">(),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Aplicamos MICE solo a las columnas numéricas</span>
+<span class="n">df_imputado_mice</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># Usamos el df con las imputaciones simples ya hechas</span>
+<span class="n">df_imputado_mice</span><span class="p">[</span><span class="n">numeric_cols_knn</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputer_mice</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="n">numeric_cols_knn</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficos para puntuacion_credito con MICE</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado_mice</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Después de Imputar (MICE)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Puntuación de Crédito con MICE&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3f7e36d589e0a6a538298527ddfa5d531246eafebf10a3add4f52df7caf5ff1e.png" src="_images/3f7e36d589e0a6a538298527ddfa5d531246eafebf10a3add4f52df7caf5ff1e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado_mice</span><span class="p">,</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación para la columna: puntuacion_credito ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 9.405e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.197, p-valor = 9.493e-12
+   Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 3.888, p-valor = 1.093e-04
+   Conclusión: Las medias son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lightgbm">
+<h2><strong>2. LightGBM</strong><a class="headerlink" href="#lightgbm" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+
+<span class="c1"># Suponemos que df_imputado es tu dataframe con imputaciones simples para las otras variables</span>
+<span class="n">df_mice_lgbm</span> <span class="o">=</span> <span class="n">df_imputado</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 1. Crear el indicador de ausencia (¡sigue siendo crucial!)</span>
+<span class="n">df_mice_lgbm</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito_is_missing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># 2. Separar datos para entrenar el modelo de imputación</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_mice_lgbm</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_mice_lgbm</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span>
+
+<span class="c1"># Convertir categóricas a numéricas si es necesario para LightGBM</span>
+<span class="c1"># (pd.get_dummies o similar)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Datos de entrenamiento son las filas donde &#39;puntuacion_credito&#39; NO era nulo</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+<span class="c1"># Datos a predecir son las filas donde &#39;puntuacion_credito&#39; ERA nulo</span>
+<span class="n">X_to_impute</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+<span class="c1"># 3. Entrenar un modelo potente</span>
+<span class="n">lgbm_imputer</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lgbm_imputer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 4. Predecir e imputar</span>
+<span class="n">imputed_values</span> <span class="o">=</span> <span class="n">lgbm_imputer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_to_impute</span><span class="p">)</span>
+
+<span class="c1"># 5. Rellenar los valores en el dataframe</span>
+<span class="n">df_mice_lgbm</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">imputed_values</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graficos para puntuacion_credito con lightgbm</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Antes de Imputar&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_mice_lgbm</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Después de Imputar (LightGBM)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Puntuación de Crédito con LightGBM&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/671969685cdb0b6f1d59c1807aaaa1b0accb42976dff85fa6067fb79fc7c4e54.png" src="_images/671969685cdb0b6f1d59c1807aaaa1b0accb42976dff85fa6067fb79fc7c4e54.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_mice_lgbm</span><span class="p">,</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación para la columna: puntuacion_credito ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 9.405e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.091, p-valor = 7.816e-03
+   Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = -0.120, p-valor = 9.047e-01
+   Conclusión: No hay evidencia de diferencia significativa entre las medias (p &gt;= 0.05).
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gain">
+<h2><strong>3. GAIN</strong><a class="headerlink" href="#gain" title="Link to this heading">#</a></h2>
+<p>GAIN (Missing Data Imputation using Generative Adversarial Nets)  utiliza un enfoque de competencia entre un Generador, que rellena los datos faltantes, y un Discriminador, que intenta descubrir qué datos son reales y cuáles son imputados. La clave de su éxito es un mecanismo de pistas que guía al Discriminador, forzando al Generador a aprender la distribución verdadera de los datos. Además, el Generador no solo aprende a engañar, sino también a reconstruir los datos conocidos, lo que mejora significativamente la calidad de las imputaciones <span id="id1">[<a class="reference internal" href="references.html#id2" title="Jinsung Yoon, James Jordon, and Mihaela van der Schaar. Gain: missing data imputation using generative adversarial nets. 2018. arXiv:1806.02920.">1</a>]</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Código para Imputación con GAIN ---</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># Asegúrate de que la ruta a GAIN esté en sys.path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;C:/Users/Jose/Documents/GitHub/GAIN&#39;</span><span class="p">)</span>
+<span class="n">path_to_gain_code</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Jose/Documents/GitHub/GAIN&#39;</span>
+
+<span class="kn">from</span> <span class="nn">gain</span> <span class="kn">import</span> <span class="n">gain</span>
+
+<span class="c1"># --- 1. Preparación de Datos ---</span>
+<span class="n">df_gain</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df_gain</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">df_numeric</span> <span class="o">=</span> <span class="n">df_gain</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">]</span>
+<span class="n">original_index</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">index</span>
+<span class="n">original_columns</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">df_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_numeric</span><span class="p">)</span>
+
+<span class="c1"># --- 2. Configurar y Ejecutar GAIN ---</span>
+<span class="n">gain_parameters</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+<span class="s1">&#39;hint_rate&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+<span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="p">}</span>
+<span class="n">imputed_data</span> <span class="o">=</span> <span class="n">gain</span><span class="p">(</span><span class="n">df_scaled</span><span class="p">,</span> <span class="n">gain_parameters</span><span class="p">)</span>
+
+<span class="c1"># --- 3. Revertir la Normalización y Reconstruir ---</span>
+<span class="n">imputed_data_rescaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">imputed_data</span><span class="p">)</span>
+<span class="n">df_imputed_gain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">imputed_data_rescaled</span><span class="p">,</span>
+   <span class="n">index</span><span class="o">=</span><span class="n">original_index</span><span class="p">,</span>
+   <span class="n">columns</span><span class="o">=</span><span class="n">original_columns</span><span class="p">)</span>
+
+<span class="c1"># --- 4. Evaluación ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Imputación con GAIN completada. Visualizando resultados... ---&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#348ABD&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original (sin NaN)&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputed_gain</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Después de Imputación con GAIN&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Imputación con GAIN&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 5000/5000 [00:07&lt;00:00, 641.04it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Imputación con GAIN completada. Visualizando resultados... ---
+</pre></div>
+</div>
+<img alt="_images/0064f455d683d34f69493790502b156633ef2b61e2dbd95c6483c61a033f604a.png" src="_images/0064f455d683d34f69493790502b156633ef2b61e2dbd95c6483c61a033f604a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluar_imputacion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputed_gain</span><span class="p">,</span> <span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación para la columna: puntuacion_credito ---
+
+1. Prueba de Normalidad (Shapiro-Wilk) para datos originales:
+   Estadístico = 0.998, p-valor = 9.405e-01
+   Conclusión: No se puede rechazar que los datos originales sigan una distribución normal (p &gt;= 0.05).
+
+2. Prueba de Igualdad de Distribuciones (Kolmogorov-Smirnov):
+   Estadístico = 0.124, p-valor = 6.740e-05
+   Conclusión: Las distribuciones antes y después de imputar son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+
+3. Prueba de Comparación de Centralidad:
+   Aplicando t-test de Student (asumiendo normalidad):
+   Estadístico = 2.195, p-valor = 2.844e-02
+   Conclusión: Las medias son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusiones-para-puntuacion-credito">
+<h2><strong>Conclusiones para <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong><a class="headerlink" href="#conclusiones-para-puntuacion-credito" title="Link to this heading">#</a></h2>
+<section id="conclusion-el-arte-de-torturar-los-datos-hasta-que-confiesen-una-mentira">
+<h3><strong>Conclusión: El Arte de Torturar los Datos Hasta que Confiesen una Mentira</strong><a class="headerlink" href="#conclusion-el-arte-de-torturar-los-datos-hasta-que-confiesen-una-mentira" title="Link to this heading">#</a></h3>
+<p>Tras someter la variable <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code> a un escuadrón de fusilamiento algorítmico—desde el simple vecino (KNN) hasta la burocracia estadística (MICE), el esteroide de caja negra (LightGBM) y la inteligencia artificial de moda (GAIN)—la conclusión es brutalmente clara.</p>
+<p>El problema no es el método; el problema es la realidad.</p>
+<p>Con un 50% de los datos ausentes bajo una fuerte sospecha de ser MNAR (la gente con mal crédito o sin crédito simplemente no lo reporta), intentar imputar <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code> es pedir a un algoritmo que lea la mente de gente que deliberadamente no quiso hablar.</p>
+<p>Aunque LightGBM parece ser más comedido, al final la validación estadistica demuestra lo evidente.</p>
+<p><strong>Veredicto final:</strong> La imputación de <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code> no ha visto luz. La única decisión honesta es declararla no recuperable. Las conclusiones que saque de ella será, en el mejor de los casos, una mentira bien estructurada.</p>
+</section>
+<section id="tabla-resumen">
+<h3><strong>Tabla Resumen</strong><a class="headerlink" href="#tabla-resumen" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Variable</p></th>
+<th class="head text-left"><p>% Nulos (antes)</p></th>
+<th class="head text-left"><p>Tipo de Ausencia (Hipótesis)</p></th>
+<th class="head text-left"><p>Método de Imputación Aplicado</p></th>
+<th class="head text-left"><p>¿Mantiene Distribución?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>altura_cm</strong></p></td>
+<td class="text-left"><p>2%</p></td>
+<td class="text-left"><p>MCAR</p></td>
+<td class="text-left"><p>Mediana</p></td>
+<td class="text-left"><p><strong>Sí</strong>. K-S p=0.413, t-test p=0.993 (sin diferencia)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>edad</strong></p></td>
+<td class="text-left"><p>4%</p></td>
+<td class="text-left"><p>MCAR</p></td>
+<td class="text-left"><p>Mediana</p></td>
+<td class="text-left"><p><strong>Sí</strong>. (Evaluado) K-S y Mann-Whitney p &gt; 0.05. Método robusto.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>ciudad</strong></p></td>
+<td class="text-left"><p>5%</p></td>
+<td class="text-left"><p>MCAR</p></td>
+<td class="text-left"><p>Moda</p></td>
+<td class="text-left"><p><strong>Sí</strong>. (Evaluado) Chi-Cuadrado p &gt; 0.05.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>sexo</strong></p></td>
+<td class="text-left"><p>8%</p></td>
+<td class="text-left"><p>MCAR</p></td>
+<td class="text-left"><p>Moda</p></td>
+<td class="text-left"><p><strong>Sí</strong>. (Evaluado) Chi-Cuadrado p &gt; 0.05.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>nivel_educativo</strong></p></td>
+<td class="text-left"><p>10%</p></td>
+<td class="text-left"><p>MNAR</p></td>
+<td class="text-left"><p>Moda</p></td>
+<td class="text-left"><p><strong>No</strong>. (Evaluado) Chi-Cuadrado p &lt; 0.05.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>estado_civil</strong></p></td>
+<td class="text-left"><p>35%</p></td>
+<td class="text-left"><p>MNAR</p></td>
+<td class="text-left"><p>Nueva categoría ‘No Informado’</p></td>
+<td class="text-left"><p><strong>Sí</strong>. Visualización muestra preservación de categorías originales.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>segmento</strong></p></td>
+<td class="text-left"><p>20%</p></td>
+<td class="text-left"><p>MAR</p></td>
+<td class="text-left"><p>Moda agrupada por <code class="docutils literal notranslate"><span class="pre">ciudad</span></code></p></td>
+<td class="text-left"><p><strong>No</strong>. (Evaluado) Chi-Cuadrado p &lt; 0.05.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>ingresos</strong></p></td>
+<td class="text-left"><p>12%</p></td>
+<td class="text-left"><p>MNAR</p></td>
+<td class="text-left"><p>KNN Multivariado</p></td>
+<td class="text-left"><p><strong>Sí</strong>. K-S p=0.968, t-test p=0.568 (sin diferencia)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>demanda</strong></p></td>
+<td class="text-left"><p>15%</p></td>
+<td class="text-left"><p>MAR/MNAR</p></td>
+<td class="text-left"><p>KNN Multivariado</p></td>
+<td class="text-left"><p><strong>Sí</strong>. (Evaluado) K-S y t-test p &gt; 0.05.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>gasto_mensual</strong></p></td>
+<td class="text-left"><p>25%</p></td>
+<td class="text-left"><p>MNAR</p></td>
+<td class="text-left"><p>KNN Multivariado</p></td>
+<td class="text-left"><p><strong>Sí</strong>. K-S p=0.119, t-test p=0.387 (sin diferencia)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>puntuacion_credito</strong></p></td>
+<td class="text-left"><p>50%</p></td>
+<td class="text-left"><p>MNAR</p></td>
+<td class="text-left"><p>KNN, MICE, lightgbm, GAIN</p></td>
+<td class="text-left"><p><strong>No</strong>. K-S p &lt; 0.05(diferencia)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>fecha</strong></p></td>
+<td class="text-left"><p>0%</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>-</p></td>
+<td class="text-left"><p>Imputación no necesaria</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Referencias</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Taller de Imputación de Datos</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-inicial">Configuración Inicial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-inicial-de-las-variables">1. Exploración Inicial de las Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-variables">Clasificación de Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deteccion-de-valores-faltantes">2. Detección de Valores Faltantes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clasificacion-de-patrones-de-datos-faltantes">Clasificación de Patrones de datos faltantes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-y-representacion-de-la-imputacion">5. Aplicación y Representación de la Imputación</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-simple-mediana-y-moda"><strong>Imputación Simple (Mediana y Moda)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imputacion-por-moda-agrupada-segmento"><strong>Imputación por Moda Agrupada (<code class="docutils literal notranslate"><span class="pre">segmento</span></code>)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-nueva-categoria-estado-civil"><strong>Creación de Nueva Categoría (<code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#paso-3-imputacion-multivariada-con-knn"><strong>Paso 3: Imputación Multivariada con KNN</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-la-imputacion">6. Evaluación de la Imputación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-de-resultados-validacion-estadistica">Interpretación de Resultados: Validación Estadística</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-estadistica-para-variables-categoricas-imputadas"><strong>Evaluación Estadística para Variables Categóricas Imputadas</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validacion-chi-cuadrado">Validación Chi-Cuadrado:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resultados-por-variable">Resultados por Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#posibles-causas-del-fallo">Posibles causas del fallo.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intentos-de-imputar-puntuacion-credito"><strong>Intentos de imputar <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mice"><strong>1. MICE</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightgbm"><strong>2. LightGBM</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gain"><strong>3. GAIN</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusiones-para-puntuacion-credito"><strong>Conclusiones para <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-el-arte-de-torturar-los-datos-hasta-que-confiesen-una-mentira"><strong>Conclusión: El Arte de Torturar los Datos Hasta que Confiesen una Mentira</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-resumen"><strong>Tabla Resumen</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By José Manuel Menco Galván
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, José Manuel Menco Galván.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

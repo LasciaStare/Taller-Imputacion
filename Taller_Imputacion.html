@@ -1034,6 +1034,52 @@ memory usage: 93.9+ KB
 <section id="imputacion-simple-mediana-y-moda">
 <h4><strong>Imputación Simple (Mediana y Moda)</strong><a class="headerlink" href="#imputacion-simple-mediana-y-moda" title="Link to this heading">#</a></h4>
 <p>Comenzamos con las imputaciones más seguras y directas.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comparar_distribucion</span><span class="p">(</span><span class="n">df_antes</span><span class="p">,</span> <span class="n">df_despues</span><span class="p">,</span> <span class="n">columna</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Genera gráficos comparativos de la distribución de una variable antes y después de la imputación.</span>
+<span class="sd">    Formatea automáticamente los títulos de los gráficos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df_antes (pd.DataFrame): DataFrame antes de la imputación.</span>
+<span class="sd">        df_despues (pd.DataFrame): DataFrame después de la imputación.</span>
+<span class="sd">        columna (str): El nombre de la columna a comparar.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">titulo_columna</span> <span class="o">=</span> <span class="n">columna</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Verificar si la columna es numérica o categórica para elegir el gráfico adecuado</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_numeric_dtype</span><span class="p">(</span><span class="n">df_antes</span><span class="p">[</span><span class="n">columna</span><span class="p">]):</span>
+        <span class="c1"># Gráfico para variables numéricas (histograma)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_antes</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1"> - Antes de Imputar&#39;</span><span class="p">)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_despues</span><span class="p">[</span><span class="n">columna</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1"> - Después de Imputar&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Comparación de Distribución de </span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Gráfico para variables categóricas (gráfico de conteo)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">columna</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_antes</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">df_antes</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1"> - Antes de Imputar&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">columna</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df_despues</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">],</span> <span class="n">order</span><span class="o">=</span><span class="n">df_despues</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1"> - Después de Imputar&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Comparación de Frecuencia de </span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear una copia del DataFrame para las imputaciones</span>
@@ -1059,22 +1105,60 @@ memory usage: 93.9+ KB
 </div>
 </div>
 </div>
-<p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">altura_cm</span></code>)</strong></p>
+<p><strong>Visualización Comparativa</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para altura_cm</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Altura (cm) - Antes de Imputar&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;altura_cm&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Altura (cm) - Después de Imputar (Mediana)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Altura&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;altura_cm&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e5f6fd37bd6373bf66cff66e61e632e7ac7f8c93d5775a10669aee4825c1afed.png" src="_images/e5f6fd37bd6373bf66cff66e61e632e7ac7f8c93d5775a10669aee4825c1afed.png" />
+<img alt="_images/f6d9430d97f578b11c2b7f7bf44d8e65e11f5202c58aecbe26ef21f3e8f13793.png" src="_images/f6d9430d97f578b11c2b7f7bf44d8e65e11f5202c58aecbe26ef21f3e8f13793.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para edad</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0b6ab17b1cd1d273191677800c859650b818d1371c535b7318686f10fc29d795.png" src="_images/0b6ab17b1cd1d273191677800c859650b818d1371c535b7318686f10fc29d795.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para ciudad</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;ciudad&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1ae21aa85c631b3fa2c721ab4a6cf353ce9c749c8052899d506820c060ad1bb2.png" src="_images/1ae21aa85c631b3fa2c721ab4a6cf353ce9c749c8052899d506820c060ad1bb2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para sexo</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/be3b62c69bd4375b4ab3ec29ad61becda088aeef0cb68c4510cbe45204d15517.png" src="_images/be3b62c69bd4375b4ab3ec29ad61becda088aeef0cb68c4510cbe45204d15517.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para nivel_educativo</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;nivel_educativo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e920e9fb5f28479d27d7fa771d5999f0f0cd0a45b06a78254ba9a3bad03f899d.png" src="_images/e920e9fb5f28479d27d7fa771d5999f0f0cd0a45b06a78254ba9a3bad03f899d.png" />
 </div>
 </div>
 </section>
@@ -1132,20 +1216,13 @@ memory usage: 93.9+ KB
 <p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">estado_civil</span></code>)</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estado Civil - Antes de Imputar&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">df_imputado</span><span class="p">[</span><span class="s1">&#39;estado_civil&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Estado Civil - Después de Imputar (&quot;No Informado&quot;)&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Frecuencias de Estado Civil&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para estado_civil</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;estado_civil&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e27a1ab3f5a2ed76ffba2cef72a3c4eb24eda5dcd92fe9ed581868f438239d90.png" src="_images/e27a1ab3f5a2ed76ffba2cef72a3c4eb24eda5dcd92fe9ed581868f438239d90.png" />
+<img alt="_images/4ac5e0bdadd99b58f29ea342ac0ed511c6d5f806ad28e90405bf5465fe99cbe6.png" src="_images/4ac5e0bdadd99b58f29ea342ac0ed511c6d5f806ad28e90405bf5465fe99cbe6.png" />
 </div>
 </div>
 <p><em>Observación: La nueva categoría ‘No Informado’ es ahora la segunda más frecuente, capturando el patrón de ausencia sin distorsionar las categorías originales.</em></p>
@@ -1183,71 +1260,37 @@ dtype: int64
 </div>
 </div>
 <p><strong>Visualización Comparativa (<code class="docutils literal notranslate"><span class="pre">gasto_mensual</span></code>,<code class="docutils literal notranslate"><span class="pre">ingresos</span></code>,<code class="docutils literal notranslate"><span class="pre">demanda</span></code> y <code class="docutils literal notranslate"><span class="pre">puntuacion_credito</span></code>)</strong></p>
-<div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_knn_comparison</span><span class="p">(</span><span class="n">columna</span><span class="p">,</span> <span class="n">df_orig</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imp</span><span class="o">=</span><span class="n">df_imputado</span><span class="p">,</span> <span class="n">pal</span><span class="o">=</span><span class="n">PALETA</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Función compacta para visualizar la distribución de una columna antes y </span>
-<span class="sd">    después de la imputación KNN.</span>
-<span class="sd">    </span>
-<span class="sd">    Asume que los DataFrames &#39;df&#39;, &#39;df_imputado&#39; y la paleta &#39;PALETA&#39; </span>
-<span class="sd">    están definidos en el entorno.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">titulo_columna</span> <span class="o">=</span> <span class="n">columna</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    
-    <span class="c1"># Gráfico &quot;Antes&quot;</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_orig</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">pal</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
-    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2"> - Antes de Imputar&quot;</span><span class="p">)</span>
-    
-    <span class="c1"># Gráfico &quot;Después&quot;</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imp</span><span class="p">[</span><span class="n">columna</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">pal</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
-    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2"> - Después de Imputar (KNN)&quot;</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Comparación de Distribución de </span><span class="si">{</span><span class="n">titulo_columna</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para gasto_mensual</span>
-<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;gasto_mensual&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para gasto_mensual</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;gasto_mensual&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/923923a6a1b1031c87dba1ad79f02d4cf9467fc19c2d7b3dbb8aff9b1e1e4213.png" src="_images/923923a6a1b1031c87dba1ad79f02d4cf9467fc19c2d7b3dbb8aff9b1e1e4213.png" />
+<img alt="_images/a47c52ab8c4ab0fa79f11e87fcdcd47689e796ca4858dba4bb1c4a58cad2827c.png" src="_images/a47c52ab8c4ab0fa79f11e87fcdcd47689e796ca4858dba4bb1c4a58cad2827c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para ingresos</span>
-<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;ingresos&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para ingresos</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;ingresos&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dfc75a935a2a655cbab96510d8b98d998382291dccdb86047b11b366709314e8.png" src="_images/dfc75a935a2a655cbab96510d8b98d998382291dccdb86047b11b366709314e8.png" />
+<img alt="_images/931794df77250237a455fdcd80176fbae12d9b6f426c996b7268384f41143d9d.png" src="_images/931794df77250237a455fdcd80176fbae12d9b6f426c996b7268384f41143d9d.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos para demanda</span>
-<span class="n">plot_knn_comparison</span><span class="p">(</span><span class="s1">&#39;demanda&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gráficos comparativos para demanda</span>
+<span class="n">comparar_distribucion</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_imputado</span><span class="p">,</span> <span class="s1">&#39;demanda&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1961c10c8b9f68e891c40de2c9a309d2ed52789d68cf763817c2d74c5180f7a9.png" src="_images/1961c10c8b9f68e891c40de2c9a309d2ed52789d68cf763817c2d74c5180f7a9.png" />
+<img alt="_images/f4a9b1fe25ed86b8e0c1d8c6eb3395dfd91d0377b4e255843df05ccc7f82eb93.png" src="_images/f4a9b1fe25ed86b8e0c1d8c6eb3395dfd91d0377b4e255843df05ccc7f82eb93.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1592,7 +1635,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Antes de Imputar&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado_mice</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_imputado_mice</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_peligro&#39;</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Después de Imputar (MICE)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Puntuación de Crédito con MICE&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1600,7 +1643,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3f7e36d589e0a6a538298527ddfa5d531246eafebf10a3add4f52df7caf5ff1e.png" src="_images/3f7e36d589e0a6a538298527ddfa5d531246eafebf10a3add4f52df7caf5ff1e.png" />
+<img alt="_images/ef0fc561ddc44148cffbc0630c6394c3231c2713e2b4c71df0a370411c297319.png" src="_images/ef0fc561ddc44148cffbc0630c6394c3231c2713e2b4c71df0a370411c297319.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1682,7 +1725,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;antes&#39;</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Antes de Imputar&#39;</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_mice_lgbm</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_ok&#39;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df_mice_lgbm</span><span class="p">[</span><span class="s1">&#39;puntuacion_credito&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">PALETA</span><span class="p">[</span><span class="s1">&#39;despues_peligro&#39;</span><span class="p">])</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Puntuación Crédito - Después de Imputar (LightGBM)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Comparación de Distribución de Puntuación de Crédito con LightGBM&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1690,7 +1733,7 @@ Conclusión: Las distribuciones son SIGNIFICATIVAMENTE DIFERENTES (p &lt; 0.05).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/671969685cdb0b6f1d59c1807aaaa1b0accb42976dff85fa6067fb79fc7c4e54.png" src="_images/671969685cdb0b6f1d59c1807aaaa1b0accb42976dff85fa6067fb79fc7c4e54.png" />
+<img alt="_images/4212fb902edd950eac57629e6931867d76167a964a986925d9d37f3ee675b345.png" src="_images/4212fb902edd950eac57629e6931867d76167a964a986925d9d37f3ee675b345.png" />
 </div>
 </div>
 <div class="cell docutils container">
